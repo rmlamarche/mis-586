@@ -1,0 +1,33 @@
+{
+  "name": "mis-586",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmlamarche/mis-586.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmlamarche/mis-586/issues"
+  },
+  "homepage": "https://github.com/rmlamarche/mis-586#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "connect-mongo": "^3.1.2",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
+    "winston": "^3.2.1"
+  }
+}
