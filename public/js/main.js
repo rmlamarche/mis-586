@@ -113,6 +113,11 @@ $(function() {
     });
   
   }
+
+  document.querySelectorAll('.toast-close')[0].addEventListener('click', function(event) {
+    event.preventDefault();
+    event.currentTarget.parentNode.classList.remove('show');
+  });
   
 });
 
