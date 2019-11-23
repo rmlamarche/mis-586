@@ -303,5 +303,102 @@
 
   <%- include('./partials/footer.ejs'); %>
   <script src="js/index.js"></script>
+
+  <style>
+    .toaster {
+      position: fixed;
+      top: 110px;
+      right: 20px;
+      min-width: 300px;
+      min-height: 100px;
+      z-index: 250;
+      display: flex;
+      justify-content: center;
+      align-content: stretch;
+      margin:0;
+      padding:0;
+    }
+    .toast {
+      margin: 1em;
+      padding: 1em;
+      background: #fefefe;
+      min-height: 100px;
+      width: 100%;
+      display: none;
+      transition: all .5s ease;
+      position: relative;
+      border-radius: 3px;
+      color: black;
+      box-shadow: 1px 1px 2px rgba(0,0,0,.2);
+    }
+    .toast.show {
+      display: block;
+    }
+    .toast-close {
+      position: absolute;
+      top: 0.125em;
+      right: 0.125em;
+      background: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      margin:0;
+      padding: 0 .5em .25em .25em;
+      font-weight: bold;
+      color: #aaa;
+      user-select: none;
+      font-size: 1.25em;
+      transition: color .5s ease;
+    }
+    .toast-close:hover {
+      color: #333;
+    }
+    .toast-title {
+      font-weight: bold;
+    }
+    .toast-body {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .toast-body div {
+      flex: 1 1 auto;
+      margin: 0 0.25em;
+    }
+    .toast-body :first-child {
+      margin-left:0;
+    }
+    .toast-body :last-child {
+      margin-right:0;
+    }
+    .box-pill {
+      border-radius: 1px;
+      border: thin dashed #aaa;
+      background: #e6e8f4;
+      transition: all .5s ease;
+      min-height: 25px;
+    }
+    .box-pill.active {
+      border: none;
+      background: #818bc6;
+    }
+  </style>
+
+
+  <div class="toaster">
+    <div class="toast show">
+      <button class="toast-close">&times;</button>
+      <div class="toast-title">Add 3 Items to your Cart</div>
+      <div class="toast-body">
+        <div class="box-pill"></div>
+        <div class="box-pill"></div>
+        <div class="box-pill"></div>
+        <div><img src="img/trophy.svg" alt="Trophy"></div>
+      </div>
+    </div>
+  </div>
+
+
+
 </body>
 </html>

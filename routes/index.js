@@ -63,7 +63,7 @@ function initAchievement() {
     },
     badge: {
       title: 'Add 3 Items to your Cart',
-      src: 'img/badge.svg'
+      src: 'img/trophy.svg'
     },
     requiredCondition: {
       statistic: 'totalCount',
