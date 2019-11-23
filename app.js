@@ -1,7 +1,9 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const logger = require('./server/logger.js');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5860;
 
@@ -16,9 +18,13 @@ app.use(session({
   resave: true
 }));
 
-app.use(require('./routes'));
+app.set('view engine', 'ejs');
 
-app.use((err, req, res, next) => {
-  logger.err(err);
-  return res.status(err.status).send(err);
-});
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
+app.use(require('./routes'));
