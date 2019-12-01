@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use((req,res,next) => {
+  res.locals.documentRoot = process.env.DOCUMENT_ROOT || '';
   req.session.cart = req.session.cart || [];
   res.locals.numItems = req.session.cart.reduce((a,i) => a + i.qty,0);
   res.locals.cart = req.session.cart;
