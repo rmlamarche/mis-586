@@ -45,6 +45,7 @@ router.post('/api/v1/cart/clear', (req, res, next) => {
   req.session.cart = [];
   req.session.achievement = initAchievement();
   return res.json({
+    success: true,
     cart: req.session.cart,
     achievement: req.session.achievementsEnabled ? req.session.achievement : null
   });
