@@ -6,6 +6,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5860;
+const DOCUMENT_ROOT = process.env.DOCUMENT_ROOT || '';
 
 app.listen(PORT, () => {
   logger.info(`mis-586 running on ${PORT}`);
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use((req,res,next) => {
-  res.locals.documentRoot = process.env.DOCUMENT_ROOT || '';
+  res.locals.documentRoot = DOCUMENT_ROOT;
   req.session.cart = req.session.cart || [];
   res.locals.numItems = req.session.cart.reduce((a,i) => a + i.qty,0);
   res.locals.cart = req.session.cart;
