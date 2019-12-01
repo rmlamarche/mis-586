@@ -17,6 +17,7 @@
 
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fun.css">
 </head>
 <body>
 
@@ -38,7 +39,7 @@
           </ul>
 
           <ul class="nav-shop">
-            <li class="nav-item"><button id="button-shopping-cart"><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+            <li class="nav-item"><button id="button-shopping-cart"><i class="ti-shopping-cart"></i><span class="nav-shop__circle" id="number-items"><%= locals.numItems %></span></button> </li>
             <li class="nav-item"><a class="button button-header" href="/cart">Buy Now</a></li>
           </ul>
         </div>

@@ -7,7 +7,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/cart', (req, res, next) => {
-  return res.render('cart.ejs');
+  const subTotal = req.session.cart.reduce((a, i) => a + i.price * i.qty, 0);
+  return res.render('cart.ejs',{subTotal});
 });
 
 router.post('/api/v1/cart/add-item', (req, res, next) => {
@@ -30,22 +31,23 @@ router.post('/api/v1/cart/add-item', (req, res, next) => {
       }
     );
   }
-  return res.json(req.session.cart);
+
+  req.session.achievement = req.session.achievement || initAchievement();
+  req.session.achievement.progress++;
+  
+  return res.json({
+    cart: req.session.cart,
+    achievement: req.session.achievementsEnabled ? req.session.achievement : null
+  });
 });
 
 router.post('/api/v1/cart/clear', (req, res, next) => {
   req.session.cart = [];
-  return res.json(req.session.cart);
-});
-
-router.post('/api/v1/achievement/track-progress', (req, res, next) => {
-  req.session.achievement.progress++;
-  return res.json(req.session.achievement);
-});
-
-router.post('/api/v1/achievement/reset-progress', (req, res, next) => {
   req.session.achievement = initAchievement();
-  return res.json(req.session.achievement);
+  return res.json({
+    cart: req.session.cart,
+    achievement: req.session.achievementsEnabled ? req.session.achievement : null
+  });
 });
 
 module.exports = router;

@@ -27,4 +27,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.use((req,res,next) => {
+  req.session.cart = req.session.cart || [];
+  res.locals.numItems = req.session.cart.reduce((a,i) => a + i.qty,0);
+  res.locals.cart = req.session.cart;
+  req.session.achievementsEnabled = true;
+  return next();
+});
+
 app.use(require('./routes'));
