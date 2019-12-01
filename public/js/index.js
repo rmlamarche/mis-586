@@ -1,8 +1,10 @@
 window.addEventListener('load', function() {
 
+  const documentRoot = document.getElementById('documentRoot').value;
+
   document.getElementById('button-shopping-cart').addEventListener('click', function(event) {
     event.preventDefault();
-    window.location.href = '/cart';
+    window.location.href = documentRoot + '/cart';
   });
 
   let toasterTimeout;
@@ -19,7 +21,7 @@ window.addEventListener('load', function() {
       const itemPrice = parseFloat(cardProduct.querySelector('.card-product__price').innerHTML.replace('$', ''));
       console.log({itemPrice});
       const request = new XMLHttpRequest();
-      request.open("POST", '/api/v1/cart/add-item');
+      request.open("POST", documentRoot + '/api/v1/cart/add-item');
       request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       request.onload = function() {
         const response = JSON.parse(request.responseText);
