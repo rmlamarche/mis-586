@@ -28,6 +28,7 @@ window.addEventListener('load', function() {
         console.log({response});
         const boxPills = document.querySelector('.toast').querySelectorAll('.box-pill');
         console.log({boxPills});
+        document.getElementById('number-items').innerHTML = parseInt(response.numItems);
         if (response.achievement && response.achievement.progress >= 1 && response.achievement.progress <= 3) {
           clearTimeout(toasterTimeout);
           document.querySelector('.toast').classList.add('show');

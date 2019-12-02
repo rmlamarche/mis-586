@@ -37,7 +37,8 @@ router.post('/api/v1/cart/add-item', (req, res, next) => {
   
   return res.json({
     cart: req.session.cart,
-    achievement: req.session.achievementsEnabled ? req.session.achievement : null
+    achievement: req.session.achievementsEnabled ? req.session.achievement : null,
+    numItems: req.session.cart.reduce((a,i) => a + i.qty,0)
   });
 });
 
